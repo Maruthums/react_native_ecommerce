@@ -23,6 +23,7 @@ export const totalWallet = require('./walletpic.png');
 export const referFrd = require('./refer-friends.png');
 export const referEarn = require('./refer-and-earn.png');
 export const success = require('./success-full-images.png');
+export const png = require('./png.jpg');
 
 //social media 
 

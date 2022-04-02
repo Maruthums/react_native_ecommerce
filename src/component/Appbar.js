@@ -5,10 +5,11 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
-    Image
+    Image,
+    TextInput
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Menu,filter} from '../assets/images/index';
+import {Menu,filter,shop} from '../assets/images/index';
 
 const AppBar=(props)=>{
     const navigation =useNavigation();
@@ -19,7 +20,7 @@ const AppBar=(props)=>{
         colors={['#9c0420', '#602dd4']}
         style={
             {
-                height: 100,
+                height:props.screenName == 'Home' ? 120 : 80,
                 borderBottomLeftRadius: 27,
                 borderBottomRightRadius: 27,
             
@@ -49,6 +50,13 @@ const AppBar=(props)=>{
                         {props.screenName}
                     </Text>
                     <TouchableOpacity>
+                   {props.screenName == 'Home'? <Image source={shop} 
+                    style={{
+                        tintColor: '#fff',
+                        resizeMode: 'stretch',
+                        width: 28,
+                        height: 24,
+                    }}/>:
                     <Image source={filter} 
                     style={{
                         tintColor: '#fff',
@@ -56,9 +64,43 @@ const AppBar=(props)=>{
                         width: 28,
                         height: 24,
                     }}/>
-                    
+                }
                 </TouchableOpacity>
             </View>
+            {props.screenName == 'Home' &&
+            <View style={{
+                flexDirection:'row',
+            }}>
+            <View style={{
+                backgroundColor:'#fff',
+                marginHorizontal:20,
+                paddingHorizontal:20,
+                flex:5,
+                borderRadius:5,
+                 }}>
+                <View>
+                    <TextInput
+                    style={{
+                        color:'#000',
+                        marginVertical:-8
+                    }}/>
+                </View>
+            </View>
+            
+            <TouchableOpacity style={{
+                flex:1
+            }}>
+            <Image source={filter} 
+            style={{
+                tintColor: '#fff',
+                resizeMode: 'stretch',
+                width: 28,
+                height: 24,
+            }}/>
+            
+        </TouchableOpacity>
+        </View>
+            }
         </LinearGradient>
     )
 }

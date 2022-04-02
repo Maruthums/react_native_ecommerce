@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 // @react-native-masked-view/masked-view
 import org.reactnative.maskedview.RNCMaskedViewPackage;
+// lottie-react-native
+import com.airbnb.android.react.lottie.LottiePackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 // react-native-linear-gradient
@@ -69,6 +71,7 @@ public class PackageList {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
       new RNCMaskedViewPackage(),
+      new LottiePackage(),
       new RNGestureHandlerPackage(),
       new LinearGradientPackage(),
       new ReanimatedPackage(),
