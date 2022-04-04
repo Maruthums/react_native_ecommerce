@@ -32,12 +32,12 @@ export const instagram = require('./instagram.png');
 export const facebook = require('./facebook.png');
 export const google = require('./google-plus.png');
 
-// // users
-// // export const userAvatar = require('./Users/userAvatar.png');
-// // export const help = require('./Users/help.png');
-// // export const refer = require('./Users/refer.png');
-// // export const acc = require('./Users/userIcon.png');
-// // export const logOut = require('./Users/logOut.png');
+// banners
+export const img1 = require('./List/img.jpg');
+export const img2 = require('./List/img (1).jpg');
+export const img3 = require('./List/img (2).jpg');
+export const img4= require('./List/img (3).jpg');
+export const img5 = require('./List/img (4).jpg');
 
 
 // //category
@@ -47,7 +47,7 @@ export const google = require('./google-plus.png');
 // // export const vegetable = require('./fruit.png');
 
 // // fruitsCate
-// export const fruitsApple = require('./FruitsCategory/apple.png');
+export const fruitsApple = require('./FruitsCategory/apple.png');
 
 // //List
 // export const listApple = require('./List/addApple.png');

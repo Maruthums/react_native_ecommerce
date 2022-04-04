@@ -2,7 +2,7 @@ import { transform } from "@babel/core";
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, Animated, Dimensions, TouchableOpacity, TextInput } from 'react-native';
 import LinearGradient from "react-native-linear-gradient";
-import { png } from '../assets/images/index';
+import { png,back } from '../assets/images/index';
 
 const { width, height } = Dimensions.get('window');
 
@@ -10,7 +10,7 @@ const { width, height } = Dimensions.get('window');
 const Login = ({ navigation }) => {
     const [text, setText] = useState("")
     const [fullText, setFullText] = useState(
-        "Wellcom Back please Sign in"
+        "Wellcome Back"
     )
     const [index, setIndex] = useState(0)
 
@@ -28,24 +28,24 @@ const Login = ({ navigation }) => {
         Dimensions.get('window').width));
     const [lbtn, setlBtn] = useState(new Animated.Value(
         Dimensions.get('window').width - 392))
-const [top, setTop] = useState(new Animated.Value(
-        Dimensions.get('window').width))
-const [isSkip, setSkip] = useState(false);
-let rotateValueHolder = new Animated.Value(0);
-const startImageRotateFunction = () => {
-  rotateValueHolder.setValue(0);
-  Animated.timing(rotateValueHolder, {
-    toValue: 1,
-    duration: 3000,
-    easing: Easing.linear,
-    useNativeDriver: false,
-  }).start(() => startImageRotateFunction());
-};
+    const [top, setTop] = useState(new Animated.Value(
+        Dimensions.get('window').width - 392))
+    const [isSkip, setSkip] = useState(false);
+    let rotateValueHolder = new Animated.Value(0);
+    const startImageRotateFunction = () => {
+        rotateValueHolder.setValue(0);
+        Animated.timing(rotateValueHolder, {
+            toValue: 1,
+            duration: 3000,
+            easing: Easing.linear,
+            useNativeDriver: false,
+        }).start(() => startImageRotateFunction());
+    };
 
-const rotateData = rotateValueHolder.interpolate({
-  inputRange: [0, 1],
-  outputRange: ['0deg', '360deg'],
-});
+    const rotateData = rotateValueHolder.interpolate({
+        inputRange: [0, 1],
+        outputRange: ['0deg', '360deg'],
+    });
     const leftToRight = () => {
         Animated.parallel([
             Animated.timing(moveAnimat, {
@@ -123,9 +123,9 @@ const rotateData = rotateValueHolder.interpolate({
 
     return (
         <LinearGradient
-                        start={{ x: 1.0, y: 0.2 }}
-                        end={{ x: 0.5, y: 2 }}
-                        colors={['#9c0420', '#602dd4']}s
+            start={{ x: 0.0, y: 0.0 }}
+            end={{ x: 0.9, y: 2 }}
+            colors={['#000', '#000']} 
             style={{
                 flex: 1,
                 justifyContent: 'flex-end'
@@ -141,41 +141,43 @@ const rotateData = rotateValueHolder.interpolate({
                     source={png}
                     style={{ flex: 1, height: null, width: null, borderBottomRightRadius: img, borderBottomLeftRadius: img }}
                 />
-               {isSkip == true ?  <Animated.View style={{
-                    justifyContent:'center',
-                    alignItems:'center',
-                    left:top
+                {isSkip == true ? <Animated.View style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    left: top
                 }}>
                     <TouchableOpacity onPress={Right}>
-                    <LinearGradient
-                        start={{ x: 0.0, y: 0.0 }}
-                        end={{ x: 0.5, y: 2 }}
-                        colors={['#9c0420', '#602dd4']}
-                        style={
-                            {
-                                height: 40,
-                                width: 40,
+                        <LinearGradient
+                            start={{ x: 0.0, y: 0.0 }}
+                            end={{ x: 0.5, y: 2 }}
+                            colors={['#9c0420', '#602dd4']}
+                            style={
+                                {
+                                    height: 40,
+                                    width: 40,
+                                    justifyContent: 'center',
+                                    borderRadius: 50,
+                                    bottom: 20,
+                                }}>
+                            <View style={{
                                 justifyContent: 'center',
-                                borderRadius: 50,
-                                bottom: 20,
+                                alignItems: 'center',
                             }}>
-                        <View style={{
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
-                            <Animated.Text style={{
-                                color: '#fff',
-                                fontSize: 18,
-                                fontWeight: 'bold',
-                                transform: [{rotate: rotateData}]
-                            }}>
-                                X
-                            </Animated.Text>
-                        </View>
-                    </LinearGradient>
+                                <Animated.Image 
+                                source={back}
+                                style={{
+                                    width:20,
+                                    height:20,
+                                    transform: [{ rotate: '270deg' }],
+                                    tintColor:'#fff'
+                                }}>
+                                    
+                                </Animated.Image>
+                            </View>
+                        </LinearGradient>
                     </TouchableOpacity>
                 </Animated.View>
-                : null
+                    : null
                 }
                 {/* <Animated.View
                     style={{
@@ -201,8 +203,9 @@ const rotateData = rotateValueHolder.interpolate({
                                 alignItems: 'center',
                                 borderRadius: 15
                             }}>
-                        <Animated.Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' ,
-                    }}>
+                        <Animated.Text style={{
+                            fontSize: 20, fontWeight: 'bold', color: 'white',
+                        }}>
                             {text}
                         </Animated.Text>
                     </LinearGradient>
@@ -212,9 +215,9 @@ const rotateData = rotateValueHolder.interpolate({
                 <View>
                     <TextInput
                         placeholder="Phone"
-                        placeholderTextColor='#9c0420'
+                        placeholderTextColor='#c5c5c5'
                         style={{
-                            borderColor: '#9c0420',
+                            borderColor: '#c5c5c5',
                             marginHorizontal: 20,
                             fontSize: 18,
                             fontWeight: 'bold',
@@ -256,8 +259,8 @@ const rotateData = rotateValueHolder.interpolate({
                     </LinearGradient>
                 </TouchableOpacity>
             </Animated.View>
-        
-            </LinearGradient>
+
+        </LinearGradient>
     )
 }
 
